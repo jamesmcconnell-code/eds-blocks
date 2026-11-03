@@ -1,0 +1,126 @@
+.pricing-table {
+  --pricing-border: var(--light-color, #e5e5e5);
+  --pricing-accent: var(--link-color, #3b63fb);
+  --pricing-surface: var(--background-color, #fff);
+}
+
+.pricing-table .pricing-table-toggle {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 32px;
+  padding: 4px;
+  border: 1px solid var(--pricing-border);
+  border-radius: 999px;
+}
+
+.pricing-table .pricing-table-toggle button {
+  margin: 0;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pricing-table .pricing-table-toggle button[aria-pressed="true"] {
+  background: var(--pricing-accent);
+  color: #fff;
+}
+
+.pricing-table .pricing-table-toggle button:focus-visible {
+  outline: 2px solid var(--pricing-accent);
+  outline-offset: 2px;
+}
+
+.pricing-table .pricing-table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pricing-table .pricing-table-plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  border: 1px solid var(--pricing-border);
+  border-radius: 12px;
+  background: var(--pricing-surface);
+}
+
+.pricing-table .pricing-table-plan.featured {
+  border: 2px solid var(--pricing-accent);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 8%);
+}
+
+.pricing-table .pricing-table-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--pricing-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.pricing-table .pricing-table-name {
+  margin: 0 0 8px;
+}
+
+.pricing-table .pricing-table-description {
+  margin: 0 0 16px;
+  opacity: 0.8;
+}
+
+.pricing-table .pricing-table-price {
+  margin: 0 0 24px;
+}
+
+.pricing-table .pricing-table-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pricing-table .pricing-table-period {
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+.pricing-table .pricing-table-features {
+  flex: 1;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-table .pricing-table-features li {
+  position: relative;
+  padding: 6px 0 6px 28px;
+}
+
+.pricing-table .pricing-table-features li::before {
+  position: absolute;
+  left: 0;
+  color: var(--pricing-accent);
+  font-weight: 700;
+  content: "✓";
+}
+
+.pricing-table .pricing-table-cta {
+  margin: 0;
+}
+
+.pricing-table .pricing-table-cta a {
+  display: block;
+  margin: 0;
+  text-align: center;
+}

@@ -1,0 +1,103 @@
+.before-after {
+  --before-after-accent: var(--link-color, #3b63fb);
+}
+
+.before-after .before-after-frame {
+  --position: 50%;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  user-select: none;
+}
+
+.before-after .before-after-before,
+.before-after .before-after-after {
+  position: absolute;
+  inset: 0;
+}
+
+.before-after .before-after-before {
+  clip-path: inset(0 calc(100% - var(--position)) 0 0);
+}
+
+.before-after picture,
+.before-after img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.before-after img {
+  object-fit: cover;
+}
+
+.before-after .before-after-label {
+  position: absolute;
+  top: 16px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 60%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.before-after .before-after-label-before {
+  left: 16px;
+}
+
+.before-after .before-after-label-after {
+  right: 16px;
+}
+
+/* The range input covers the whole frame so dragging anywhere works. */
+.before-after .before-after-range {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.before-after .before-after-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--position);
+  z-index: 1;
+  width: 3px;
+  background: #fff;
+  box-shadow: 0 0 6px rgb(0 0 0 / 40%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.before-after .before-after-handle::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
+  color: #222;
+  font-size: 1rem;
+  content: "◀ ▶";
+  place-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.before-after .before-after-range:focus-visible ~ .before-after-handle::after {
+  outline: 3px solid var(--before-after-accent);
+  outline-offset: 2px;
+}

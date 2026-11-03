@@ -1,0 +1,23 @@
+{
+  "total": 14,
+  "offset": 0,
+  "limit": 14,
+  "columns": ["Product", "Category", "Price", "Rating", "Stock"],
+  "data": [
+    { "Product": "Trail Pack 30L", "Category": "Bags", "Price": "$129", "Rating": "4.7", "Stock": "42" },
+    { "Product": "Summit Shell Jacket", "Category": "Apparel", "Price": "$289", "Rating": "4.8", "Stock": "18" },
+    { "Product": "Alpine Gloves", "Category": "Apparel", "Price": "$59", "Rating": "4.4", "Stock": "120" },
+    { "Product": "Carbon Poles", "Category": "Gear", "Price": "$149", "Rating": "4.6", "Stock": "35" },
+    { "Product": "Goggles Pro", "Category": "Gear", "Price": "$199", "Rating": "4.9", "Stock": "27" },
+    { "Product": "Merino Base Layer", "Category": "Apparel", "Price": "$95", "Rating": "4.5", "Stock": "64" },
+    { "Product": "Avalanche Beacon", "Category": "Safety", "Price": "$399", "Rating": "4.9", "Stock": "11" },
+    { "Product": "Probe 280", "Category": "Safety", "Price": "$69", "Rating": "4.3", "Stock": "48" },
+    { "Product": "Shovel Lite", "Category": "Safety", "Price": "$79", "Rating": "4.2", "Stock": "53" },
+    { "Product": "Helmet MIPS", "Category": "Safety", "Price": "$179", "Rating": "4.8", "Stock": "22" },
+    { "Product": "Hydration Vest", "Category": "Bags", "Price": "$1,049", "Rating": "3.9", "Stock": "3" },
+    { "Product": "Wax Kit", "Category": "Tuning", "Price": "$39", "Rating": "4.1", "Stock": "88" },
+    { "Product": "Edge Tool", "Category": "Tuning", "Price": "$29", "Rating": "4.0", "Stock": "95" },
+    { "Product": "Boot Dryer", "Category": "Gear", "Price": "$45", "Rating": "4.6", "Stock": "70" }
+  ],
+  ":type": "sheet"
+}

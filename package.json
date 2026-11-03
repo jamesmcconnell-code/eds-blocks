@@ -1,0 +1,26 @@
+{
+  "name": "eds-blocks",
+  "version": "0.1.0",
+  "description": "Open-source, copy-paste blocks for Edge Delivery Services sites.",
+  "type": "module",
+  "license": "MIT",
+  "author": "James McConnell",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesmcconnell-code/eds-blocks.git"
+  },
+  "scripts": {
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"blocks/**/*.css\"",
+    "lint": "npm run lint:js && npm run lint:css",
+    "test": "node --test test/"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jsdom": "^25.0.1",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1"
+  }
+}

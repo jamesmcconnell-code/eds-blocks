@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EDS Blocks Demo</title>
+  <link rel="icon" href="data:,">
+  <style>
+    /* Minimal stand-in for an Edge Delivery boilerplate styles.css */
+    :root {
+      --background-color: #fff;
+      --light-color: #e8ebef;
+      --dark-color: #505050;
+      --text-color: #1f2328;
+      --link-color: #2b59d9;
+      --body-font-family: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      font-family: var(--body-font-family);
+      line-height: 1.6;
+    }
+
+    main .section { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+    main .section + .section { border-top: 1px solid var(--light-color); }
+    main .section > h2 { margin-top: 0; }
+    main .block { display: none; }
+    main .block[data-block-status="loaded"] { display: block; }
+    a { color: var(--link-color); }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid var(--link-color);
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a.button.primary { background: var(--link-color); color: #fff; }
+    a.button.secondary { background: transparent; color: var(--link-color); }
+  </style>
+</head>
+<body>
+  <main>
+    <!--
+      Each block below is written the way Edge Delivery renders authored content:
+      <div class="block-name variant"><div>row<div>cell</div></div></div>
+      Serve the repo root (e.g. `npx http-server .`) and open /demo/.
+    -->
+    <div class="section">
+      <h1>EDS Blocks</h1>
+      <p>A live preview of every block in this repo, rendered from authored-style markup.</p>
+    </div>
+
+    <div class="section">
+      <h2>Data Table (from a spreadsheet)</h2>
+      <div class="data-table">
+        <div><div><a href="./data/products.json">/data/products.json</a></div></div>
+        <div><div>Columns</div><div>Product, Category, Price, Rating</div></div>
+        <div><div>Page Size</div><div>6</div></div>
+        <div><div>Caption</div><div>Winter gear catalog</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>FAQ</h2>
+      <div class="faq exclusive open-first">
+        <div><div>What is Edge Delivery Services?</div><div><p>A way to build very fast websites where authors write in documents or spreadsheets and developers ship small, self-contained blocks.</p></div></div>
+        <div><div>Do these blocks need any dependencies?</div><div><p>No. Each block is a single JavaScript file and a single CSS file. Copy the folder into your project and you are done.</p></div></div>
+        <div><div>Will they hurt my Lighthouse score?</div><div><p>They are built to keep it at 100: no libraries, no layout shift, and nothing heavy in the eager phase.</p></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Pricing Table</h2>
+      <div class="pricing-table">
+        <div>
+          <div><h3>Starter</h3><p>For personal projects</p></div>
+          <div>Free</div>
+          <div></div>
+          <div><ul><li>1 site</li><li>Community support</li></ul></div>
+          <div><a href="#starter">Get started</a></div>
+        </div>
+        <div>
+          <div><h3>Pro</h3><p><em>Most popular</em></p><p>For freelancers and small teams</p></div>
+          <div>$19</div>
+          <div>$190</div>
+          <div><ul><li>10 sites</li><li>Premium blocks</li><li>Email support</li></ul></div>
+          <div><a href="#pro">Buy Pro</a></div>
+        </div>
+        <div>
+          <div><h3>Agency</h3><p>For teams shipping client sites</p></div>
+          <div>$49</div>
+          <div>$490</div>
+          <div><ul><li>Unlimited sites</li><li>All premium blocks</li><li>Priority support</li></ul></div>
+          <div><a href="#agency">Buy Agency</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Before / After</h2>
+      <div class="before-after">
+        <div>
+          <div><picture><img src="./images/before.svg" width="1600" height="900" alt="Mountain scene on an overcast day"></picture></div>
+          <div><picture><img src="./images/after.svg" width="1600" height="900" alt="The same mountain scene on a sunny day"></picture></div>
+        </div>
+        <div><div>Overcast</div><div>Bluebird</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Timeline</h2>
+      <div class="timeline alternate">
+        <div><div>2021</div><div><h3>First AEM project</h3><p>Started building enterprise sites on Adobe Experience Manager.</p></div></div>
+        <div><div>2024</div><div><h3>Moved to Edge Delivery</h3><p>Rebuilt a classic site with document authoring and blocks.</p></div></div>
+        <div><div>2026</div><div><h3>Open-sourced the block kit</h3><p>Published reusable blocks for the community.</p></div></div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    // Mimics the block loading in the boilerplate's aem.js
+    const blocks = [...document.querySelectorAll('main .section > div[class]')];
+    await Promise.all(blocks.map(async (block) => {
+      const [name] = block.classList;
+      block.classList.add('block');
+      block.parentElement.classList.add(`${name}-container`);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = `../blocks/${name}/${name}.css`;
+      const cssLoaded = new Promise((resolve) => { css.onload = resolve; css.onerror = resolve; });
+      document.head.append(css);
+      const mod = await import(`../blocks/${name}/${name}.js`);
+      await mod.default(block);
+      await cssLoaded;
+      block.dataset.blockStatus = 'loaded';
+    }));
+    document.body.dataset.ready = 'true';
+  </script>
+</body>
+</html>
